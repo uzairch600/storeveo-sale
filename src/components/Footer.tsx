@@ -1,49 +1,32 @@
-import { motion } from 'framer-motion'
+import { BRAND_NAME, HANDLER_NAME, buildGeneralWhatsAppLink } from '../config/site'
+import { WhatsAppIcon } from './WhatsAppIcon'
 
 export function Footer() {
-  const year = new Date().getFullYear()
-
   return (
     <footer
-      className="border-t border-[var(--color-border-subtle)] px-5 py-14 md:px-8"
+      className="border-t border-white/10 bg-black px-4 py-10 md:px-6 lg:px-8"
       role="contentinfo"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="font-display text-xl text-stone-200 italic">
-            STORE<span className="font-sans not-italic text-[var(--color-gold)]">VEO</span>
-          </p>
-          <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-stone-500">
-            Storeveo.com is offered as a direct private sale — curated presentation,
-            principal-to-principal dialogue, and confidentiality by default.
+          <p className="text-lg font-bold text-white">{BRAND_NAME}</p>
+          <p className="mt-1 text-sm text-[#b3b3b3]">
+            Music promotion packages · Handled by {HANDLER_NAME}
           </p>
         </div>
-
-        <nav className="flex flex-wrap gap-x-10 gap-y-3 font-sans text-[13px] tracking-wide text-stone-400" aria-label="Footer">
-          <a href="#why" className="hover:text-stone-100">
-            Why this domain
-          </a>
-          <a href="#value" className="hover:text-stone-100">
-            Value
-          </a>
-          <a href="#vision" className="hover:text-stone-100">
-            Vision
-          </a>
-          <a href="#contact" className="hover:text-stone-100">
-            Contact
-          </a>
-        </nav>
+        <a
+          href={buildGeneralWhatsAppLink()}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-[#1DB954] hover:text-[#1ed760]"
+        >
+          <WhatsAppIcon className="h-4 w-4" />
+          Message {HANDLER_NAME} on WhatsApp
+        </a>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="mx-auto mt-12 max-w-6xl border-t border-[var(--color-border-subtle)] pt-8 font-sans text-xs text-stone-600"
-      >
-        © {year} Storeveo.com · All rights reserved. Not affiliated with any third-party
-        trademark holders; descriptive references only.
-      </motion.div>
+      <p className="mx-auto mt-8 max-w-7xl text-center text-xs text-[#727272] md:text-left">
+        © {new Date().getFullYear()} {BRAND_NAME}. All rights reserved.
+      </p>
     </footer>
   )
 }

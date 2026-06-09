@@ -1,16 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Cormorant Garamond', ui-serif, Georgia, serif;
-  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-
-  --color-surface: #060607;
-  --color-surface-elevated: #0c0c0f;
-  --color-border-subtle: rgb(255 255 255 / 0.06);
-  --color-gold: #c9a962;
-  --color-gold-muted: #a68b4b;
-  --color-neon: #3dd4e8;
-  --color-neon-deep: #1a4d5c;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-spotify-black: #000000;
+  --color-spotify-elevated: #121212;
+  --color-spotify-card: #181818;
+  --color-spotify-hover: #282828;
+  --color-spotify-green: #1db954;
+  --color-spotify-subdued: #b3b3b3;
+  --color-spotify-muted: #727272;
 }
 
 @layer base {
@@ -21,20 +19,154 @@
 
   body {
     margin: 0;
-    min-height: 100svh;
-    background-color: var(--color-surface);
-    color: rgb(248 250 252 / 0.88);
+    background-color: var(--color-spotify-black);
+    color: #fff;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background-color: rgb(201 169 98 / 0.35);
-    color: #fafaf9;
+    background-color: rgb(29 185 84 / 0.35);
+    color: #fff;
   }
+}
 
-  #root {
-    isolation: isolate;
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes eq-bounce {
+  0%,
+  100% {
+    height: calc(var(--eq-h) * 28px);
+  }
+  50% {
+    height: calc(var(--eq-h) * 14px);
+  }
+}
+
+@keyframes stream-rise {
+  from {
+    height: 8%;
+    opacity: 0.35;
+  }
+  to {
+    height: var(--bar-h);
+    opacity: 1;
+  }
+}
+
+@keyframes chart-sweep {
+  from {
+    width: 18%;
+  }
+  to {
+    width: 92%;
+  }
+}
+
+.live-pulse {
+  animation: live-pulse 1.4s ease-in-out infinite;
+}
+
+.eq-bar {
+  height: calc(var(--eq-h) * 28px);
+  animation: eq-bounce 0.9s ease-in-out infinite;
+  animation-delay: var(--eq-delay);
+}
+
+.stream-bar {
+  height: var(--bar-h);
+  animation: stream-rise 1.2s ease-out forwards;
+  animation-delay: var(--bar-delay);
+  transform-origin: bottom;
+}
+
+.chart-fill {
+  animation: chart-sweep 1.8s ease-out forwards;
+}
+
+@keyframes track-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.track-fade {
+  animation: track-fade-in 0.45s ease-out;
+}
+
+@keyframes pipeline-flow {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: right;
+    opacity: 0.35;
+  }
+}
+
+.pipeline-flow {
+  animation: pipeline-flow 2.8s ease-in-out infinite;
+}
+
+@keyframes reach-grow {
+  from {
+    width: 18%;
+  }
+  to {
+    width: 89%;
+  }
+}
+
+.reach-bar {
+  animation: reach-grow 2.2s ease-out forwards;
+}
+
+@keyframes trust-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.trust-marquee {
+  animation: trust-scroll 28s linear infinite;
+}
+
+@keyframes sla-fill {
+  from {
+    width: 35%;
+  }
+  to {
+    width: 94%;
+  }
+}
+
+.sla-bar {
+  animation: sla-fill 2s ease-out forwards;
 }

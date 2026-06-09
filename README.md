@@ -1,6 +1,6 @@
 # storeveo-sale
 
-Premium landing page for **Storeveo.com** (React + Vite + TypeScript + Tailwind).
+Music promotion **pricing packages** page — React, Vite, TypeScript, Tailwind CSS.
 
 ## Run locally
 
@@ -8,6 +8,8 @@ Premium landing page for **Storeveo.com** (React + Vite + TypeScript + Tailwind)
 npm install
 npm run dev
 ```
+
+Update contact email in `src/config/site.ts` before going live.
 
 ## Build
 
