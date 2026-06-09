@@ -5,8 +5,8 @@ export const WHATSAPP_DISPLAY = '+92 313 7575399'
 export const LOGO_URL =
   'https://res.cloudinary.com/dveyqayhf/image/upload/v1781016455/storeveo_logo_srddje.png'
 
-/** Set when Zaini's photo is ready. Empty string shows initials placeholder. */
-export const ZAINI_PHOTO_URL = ''
+export const ZAINI_PHOTO_URL =
+  'https://res.cloudinary.com/dveyqayhf/image/upload/v1781034245/zaini__Storeveo__About_hjbsly.jpg'
 
 export function buildWhatsAppLink(
   packageName: string,
